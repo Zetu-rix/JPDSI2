@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+		<p:panel header="Kalkulator">
+
+			<p:messages id="msg" />
+
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5" styleClass="bottom-space">
+					<p:outputLabel for="idx" value="Pieniądze:" />
+                                        <p:inputText id="idx" value="#{calcBB.x}" required="true"
+                                                     requiredMessage="Proszę wpisać ilośc pieniędzy"
+                                                     converterMessage="Proszę wpisać poprawną ilośc pieniędzy"
+                                                     validatorMessage="Minimalna ilość pieniędzy to 1000">
+                                            <f:validateDoubleRange minimum="1000" />
+                                        </p:inputText>
+                                        
+					<p:outputLabel for="idy" value="Miesiące:" />
+                                        <p:inputText id="idy" value="#{calcBB.y}" required="true"
+                                                     requiredMessage="Prosze wpisać ilość miesięcy"
+                                                     converterMessage="Proszę wpisać poprawną ilośc miesięcy" 
+                                                     validatorMessage="Mininalna ilość miesięcy to 5">
+                                        <f:validateDoubleRange minimum="5" />
+                                        </p:inputText>
+                                        
+                                        <p:outputLabel for="idop" value="oprocentowanie:" />
+                                        <p:inputText id="idop" value="#{calcBB.op}" required="true"
+                                                     requiredMessage="Prosze wpisać oprocentowanie"
+                                                     converterMessage="Proszę wpisać poprawne oprocentowanie" 
+                                                     validatorMessage="Minialne oprocentowanie to 10%">
+                                        <f:validateDoubleRange minimum="10" />            
+                                        </p:inputText>
+                                        
+					<p:commandButton value="Dodaj" action="#{calcBB.calc()}" update="msg" />
+				</h:panelGrid>
+				<p:commandLink value="Informacje" action="#{calcBB.info()}" />
+			</h:form>
+
+		</p:panel>
+
+	</ui:define>
+
+</ui:composition>
+</html>
