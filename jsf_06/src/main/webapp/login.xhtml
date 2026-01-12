@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+<h:head><title>Logowanie</title></h:head>
+<h:body>
+  <h1>Logowanie</h1>
+
+  <h:panelGroup rendered="#{not empty requestScope.error}">
+    <p style="color:red;">#{requestScope.error}</p>
+  </h:panelGroup>
+
+  <!-- POST do Servletu -->
+  <form method="post" action="#{request.contextPath}/login">
+    <p>Username: <input name="username" /></p>
+    <p>Password: <input name="password" type="password" /></p>
+    <button type="submit">Zaloguj</button>
+  </form>
+
+  <p><h:link outcome="index.xhtml" value="← powrót"/></p>
+</h:body>
+</html>
