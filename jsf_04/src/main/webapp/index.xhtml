@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+  <title>Kadromierz (JSF + DB)</title>
+</h:head>
+<h:body>
+  <h1>Kadromierz</h1>
+  <p>Lista użytkowników (z bazy danych) + wybór przez parametr GET.</p>
+
+  <h:dataTable value="#{kadromierzBean.users}" var="u" border="1">
+    <h:column>
+      <f:facet name="header">ID</f:facet>
+      #{u.id}
+    </h:column>
+    <h:column>
+      <f:facet name="header">Username</f:facet>
+      #{u.username}
+    </h:column>
+    <h:column>
+      <f:facet name="header">Role</f:facet>
+      #{u.role}
+    </h:column>
+    <h:column>
+      <f:facet name="header">Akcja (GET)</f:facet>
+
+      <!-- GET: przekazywanie parametru -->
+      <h:link value="Wybierz" outcome="selectUser.xhtml">
+        <f:param name="userId" value="#{u.id}"/>
+      </h:link>
+    </h:column>
+  </h:dataTable>
+
+</h:body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/2000/xhtml"
+      xmlns:h="jakarta.faces.html">
+<h:head><title>Potwierdzenie</title></h:head>
+<h:body>
+  <h2>Dodano wpis do grafiku</h2>
+
+  <!-- Obiekt przekazany przez request map (bez redirect) -->
+  <h:panelGroup rendered="#{not empty requestScope.lastAddedSchedule}">
+    <p><b>Data:</b> #{requestScope.lastAddedSchedule.shiftDate}</p>
+    <p><b>Start:</b> #{requestScope.lastAddedSchedule.shiftStart}</p>
+    <p><b>Koniec:</b> #{requestScope.lastAddedSchedule.shiftEnd}</p>
+  </h:panelGroup>
+
+  <h:link outcome="user.xhtml" value="Wróć do użytkownika"/>
+</h:body>
+</html>
